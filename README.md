@@ -1,19 +1,41 @@
 # Github Explorer
-Simple project in ReactJS for Ignite RocketSeat Bootcamp.
+Simple project in ReactJS for [RocketSeat Bootcamp](https://rocketseat.com.br/ignite).
 
 ## Setup first environment project
-* Create the `package.json` file: `yarn init -y`
-* Install the project dependencies:
+### Creating `package.json` file
+```
+yarn init -y
+```
+### Installing React
 ```
 yarn add react
 yarn add react-dom
 ```
 
+### Configuring Babel
+* Install babel dependencies:
+```
+yarn add @babel/core @babel/cli @babel/preset-env @babel/preset-react -D
+```
+* Create the `babel.config.js` file:
+```
+module.exports = {
+    presets: [
+        '@babel/preset-env',
+        '@babel/preset-react'
+    ]
+}
+* To convert a specific file:
+```
+yarn babel src/index.js --out-file dist/bundle.js
+```
+
 ## Directory structure
 - public
     - index.html
-    - favicon.ico
 - src
-
+    - index.js
+- dist
+    - bundle.js
 
 ## Tutorials
