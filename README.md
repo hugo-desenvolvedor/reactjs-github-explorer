@@ -25,16 +25,17 @@ module.exports = {
         '@babel/preset-react'
     ]
 }
+```
 * To convert a specific file:
 ```
-yarn babel src/index.js --out-file dist/bundle.js
+yarn babel src/index.jsx --out-file dist/bundle.js
 ```
 
 ## Directory structure
 - public
     - index.html
 - src
-    - index.js
+    - index.jsx
 - dist
     - bundle.js
 
