@@ -32,15 +32,18 @@ module.exports = {
 ### Configuring Webpack
 * Install the dependencies:
 ```
-yarn add webpack webpack-cli webpack-dev-server html-webpack-plugin -D
+yarn add webpack webpack-cli webpack-dev-server html-webpack-plugin cross-env -D
 ```
 * Create the `webpack.config.js` file:
 ```
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
 module.exports = {
-    mode: 'development',
+    mode: isDevelopment ? 'development' : 'production',
+    devtool: isDevelopment ? 'eval-source-map' : 'source-map',
     entry: path.resolve(__dirname, 'src', 'index'),
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -48,6 +51,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx'],
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'public')
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -76,6 +82,16 @@ module.exports = {
 - dist
     - bundle.js
     - index.html
+
+## Running the project in developmmnet environment
+```
+yarn dev
+```
+
+## Compiling the project in production environment
+```
+yarn build
+```
 
 ## Tutorials
 * [Installing Yarn](https://classic.yarnpkg.com/en/docs/install)
