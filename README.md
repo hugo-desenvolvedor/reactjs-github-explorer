@@ -32,11 +32,12 @@ module.exports = {
 ### Configuring Webpack
 * Install the dependencies:
 ```
-yarn add webpack webpack-cli webpack-dev-server -D
+yarn add webpack webpack-cli webpack-dev-server html-webpack-plugin -D
 ```
 * Create the `webpack.config.js` file:
 ```
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
@@ -48,6 +49,11 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public', 'index.html')
+        })
+    ],
     module: {
         rules: [
             {
@@ -69,6 +75,7 @@ module.exports = {
     - App.jsx
 - dist
     - bundle.js
+    - index.html
 
 ## Tutorials
 * [Installing Yarn](https://classic.yarnpkg.com/en/docs/install)
