@@ -21,7 +21,9 @@ yarn add @babel/core @babel/cli @babel/preset-env @babel/preset-react babel-load
 module.exports = {
     presets: [
         '@babel/preset-env',
-        '@babel/preset-react'
+        ['@babel/preset-react', {
+            runtime: 'automatic'
+        }]
     ]
 }
 ```
@@ -37,6 +39,7 @@ yarn add webpack webpack-cli webpack-dev-server -D
 const path = require('path')
 
 module.exports = {
+    mode: 'development',
     entry: path.resolve(__dirname, 'src', 'index'),
     output: {
         path: path.resolve(__dirname, 'dist'),
