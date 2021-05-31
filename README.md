@@ -32,7 +32,7 @@ module.exports = {
 ### Configuring Webpack
 * Install the dependencies:
 ```
-yarn add webpack webpack-cli webpack-dev-server html-webpack-plugin cross-env -D
+yarn add webpack webpack-cli webpack-dev-server html-webpack-plugin cross-env style-loader css-loader node-sass sass-loader -D
 ```
 * Create the `webpack.config.js` file:
 ```
@@ -66,6 +66,11 @@ module.exports = {
                 test: /\.jsx$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     }
@@ -77,6 +82,8 @@ module.exports = {
 - public
     - index.html
 - src
+    - styles
+        - global.scss 
     - index.jsx
     - App.jsx
 - dist
