@@ -1,5 +1,7 @@
 # Github Explorer
-Simple project in ReactJS for [RocketSeat Bootcamp](https://rocketseat.com.br/ignite).
+Get a specific repository from github and show the name, description and url.
+It's a basic project, with full enviroment configuration descripted in this document.
+It can be used like a project template.
 
 ## Setup first environment project
 ### Creating `package.json` file
@@ -98,7 +100,7 @@ yarn add typescript @babel/preset-typescript -D
 ```
 yarn tsc --init
 ```
-* Update tsconfig.json
+* Update the `tsconfig.json` file
 ```
 {
   "compilerOptions": {
@@ -134,13 +136,13 @@ yarn tsc --init
     - index.html
 - src
     - components
-        - RepositoryItem.jsx
-        - RepositoryList.jsx
+        - RepositoryItem.tsx
+        - RepositoryList.tsx
     - styles
         - global.scss
         - repositories.scss 
     - index.tsx
-    - App.jsx
+    - App.tsx
 - dist
     - bundle.js
     - index.html
