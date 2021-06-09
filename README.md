@@ -9,6 +9,7 @@ yarn init -y
 ### Installing React
 ```
 yarn add react react-dom
+yarn add @types/react @types/react-dom -D
 ```
 
 ### Configuring Babel
@@ -51,7 +52,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
@@ -66,7 +67,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx$/,
+                test: /\.(j|t)sx$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -88,13 +89,57 @@ module.exports = {
 ```
 * To generate the `bundle.js`file, run `yarn webpack`.
 
+### Configuring Typescript
+* Install the dependencies:
+```
+yarn add typescript @babel/preset-typescript -D
+```
+* Initialize the typescript
+```
+yarn tsc --init
+```
+* Update tsconfig.json
+```
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"], /* add DOM HTML */
+    "allowJs": true, /* allow js and ts files */
+    "jsx": "react-jsx", /* use react jsx */
+    "noEmit": true, /* ommit code on build */
+    "strict": true, /* strict javascript mode */
+    "moduleResolution": "node",
+    "resolveJsonModule": true, /* import json files */
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"]
+}
+```
+* Update babel.config.js
+```
+    presets: [
+        ...
+        '@babel/preset-typescript',
+        ...
+    ]
+```
+* Update webpack.config.js
+
+
 ## Directory structure
 - public
     - index.html
 - src
+    - components
+        - RepositoryItem.jsx
+        - RepositoryList.jsx
     - styles
-        - global.scss 
-    - index.jsx
+        - global.scss
+        - repositories.scss 
+    - index.tsx
     - App.jsx
 - dist
     - bundle.js
